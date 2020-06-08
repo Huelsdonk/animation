@@ -29,6 +29,7 @@ export default function Anim1() {
                        dragConstraints={{ left: -100, right: 100 }}
             >Move Me</motion.h1>
             {/* <motion.path style={{ pathLength: scrollYProgress }} /> */}
+
         </div>
     )
 }
