@@ -1,0 +1,16 @@
+.jumbotron {
+    margin-bottom: 0 !important;
+    padding: .5rem 0 .5rem 0;
+}
+
+h6 {
+    margin: 0;
+}
+
+#unicorn {
+    /* min-height: 500px; */
+}
+
+#ground {
+    min-height: 250px;
+}
