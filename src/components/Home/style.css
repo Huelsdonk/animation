@@ -12,5 +12,13 @@ h6 {
 }
 
 #ground {
-    min-height: 250px;
+    background: url("./../../assets/grass.png");    
+    background-repeat: repeat-x;
+    background-position: bottom;
+    bottom: 0;
+}
+
+#bottomUni, #bottomUni2 {
+    z-index: -100000;
+    position: relative;
 }
