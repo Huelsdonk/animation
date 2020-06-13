@@ -63,9 +63,7 @@ export default function Home() {
         boxShadow: "2px 2px 10px 10px purple",
 
     }
-    const uniPeek = {
 
-    }
 
 
     return (
@@ -133,31 +131,33 @@ export default function Home() {
                     src={Unicorn2}></motion.img>
 
             </motion.div>
-            <motion.div
-                // fix this - i want a single row //
-                variants={childVariants}
-                className="bg-primary row" id="unicorn">
-                <motion.img
-                    className=" unileftright1"
-                    initial={{ x: '-60vw' }}
-                    animate={{ x: '110vw' }}
-                    transition={{ duration: 3, delay: 8, loop: "Infinity" }}
+            <div className="container-fluid">
+                <motion.div
+                    // fix this - i want a single row //
+                    variants={childVariants}
+                    className="bg-primary row row-cols-2" id="unicorn">
+                    <motion.img
+                        className="col unileftright1"
+                        initial={{ x: '-60vw' }}
+                        animate={{ x: '110vw' }}
+                        transition={{ duration: 3, delay: 8, loop: "Infinity" }}
 
-                    alt="unicorn"
-                    src={Unicorn}
-                ></motion.img>
-                <motion.img
-                    className="unileftright"
-                    initial={{ x: '-100vw' }}
-                    animate={{ x: '115vw' }}
-                    transition={{ duration: 3, delay: 9, loop: "Infinity" }}
+                        alt="unicorn"
+                        src={Unicorn}
+                    ></motion.img>
+                    <motion.img
+                        className="col unileftright"
+                        initial={{ x: '-100vw' }}
+                        animate={{ x: '115vw' }}
+                        transition={{ duration: 3, delay: 9, loop: "Infinity" }}
 
-                    alt="unicorn"
-                    src={Unicorn4}
-                ></motion.img>
+                        alt="unicorn"
+                        src={Unicorn4}
+                    ></motion.img>
 
 
-            </motion.div>
+                </motion.div>
+            </div>
             <div className="container-fluid">
                 <motion.div
                     className="row row-cols-2"
@@ -174,17 +174,7 @@ export default function Home() {
                         src={Unicorn20}
                     ></motion.img>
 
-                    {/* <motion.img
-                        className="col-3"
-
-                        id="bottomUni"
-                        initial={{ y: '100vh', x: 0 }}
-                        animate={{ y: '10vh', x:0 }}
-                        transition={{ duration: 3, delay: 9, yoyo: "Infinity", }}
-
-                        alt="unicorn"
-                        src={Unicorn13}
-                    ></motion.img> */}
+                    
 
                     <motion.img
                         className="col"
@@ -199,30 +189,56 @@ export default function Home() {
                 </motion.div>
             </div>
             {/* fix this - button not breaking right */}
-            <motion.div className="jumbotron jumbotron-fluid bg-gradient-violet text-center"
+            <motion.div className="jumbotron jumbotron-fluid bg-gradient-violet purpleBtnDiv"
                 style={{ marginBottom: 0 }}
                 initial={{ x: -1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 10 }}
             >
-                <span><motion.img src={Unicorn45}
-                    initial={{ x: -10, y: 10, rotate: -30 }}
-                    animate={{ x: -10, y: -10, rotate: 30 }}
-                    transition={{ yoyo: Infinity }}
-                ></motion.img></span><Link to="/scroll"><motion.button
 
-                    className="btn-lg"
-                    whileHover={{
-                        scale: 1.3,
-                        transition: {
-                            yoyo: Infinity
-                        }
-                    }}
-                >MORE UNICORNS!!!!</motion.button></Link><span><motion.img src={Unicorn45}
-                    initial={{ x: 10, y: 10, rotate: 30 }}
-                    animate={{ x: 10, y: -10, rotate: -30 }}
-                    transition={{ yoyo: Infinity }}
-                ></motion.img></span>
+                <div className="container-fluid">
+                    <div className="row">
+                        {/* <div className="col d-flex justify-content-center"> */}
+                        <span className="col-sm-12 col-md-4 text-center"><motion.img
+
+                            src={Unicorn45}
+                            initial={{ x: -10, y: 10, rotate: -30 }}
+                            animate={{ x: -10, y: -10, rotate: 30 }}
+                            transition={{ yoyo: Infinity }}
+                        ></motion.img></span><Link to="/scroll" className="col-sm-12 col-md-4  text-center"><motion.button
+
+                            className="btn btn-secondary btn-lg"
+                            whileHover={{
+
+                                scale: 1.5,
+                                transition: {
+                                    yoyo: Infinity
+                                }
+                            }}
+                        >MORE UNICORNS!!!!</motion.button></Link><span className="col-sm-12 col-md-4 text-center"><motion.img
+
+                            src={Unicorn45}
+                            initial={{ x: 10, y: 10, rotate: 30 }}
+                            animate={{ x: 10, y: -10, rotate: -30 }}
+                            transition={{ yoyo: Infinity }}
+                        ></motion.img></span>
+                         {/* this is just hanging out, not in flow. overflow fixes but needs work... or put on div above */}
+                         <motion.img
+                        className="col-3"
+
+                        id="bottomUni"
+                        initial={{ y: '20vh', x: 200 }}
+                        animate={{ y: '-5vh', x:200 }}
+                        transition={{ duration: 3, delay: 9, yoyo: "Infinity", }}
+
+                        alt="unicorn"
+                        src={Unicorn13}
+                    ></motion.img>
+                    </div>
+                   
+
+                </div>
+                {/* </div> */}
             </motion.div>
         </motion.div>
     )
