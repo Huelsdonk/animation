@@ -134,11 +134,11 @@ export default function Home() {
 
             </motion.div>
             <motion.div
-
+                // fix this - i want a single row //
                 variants={childVariants}
                 className="bg-primary row" id="unicorn">
                 <motion.img
-                    className="col-6 unileftright1"
+                    className=" unileftright1"
                     initial={{ x: '-60vw' }}
                     animate={{ x: '110vw' }}
                     transition={{ duration: 3, delay: 8, loop: "Infinity" }}
@@ -147,7 +147,7 @@ export default function Home() {
                     src={Unicorn}
                 ></motion.img>
                 <motion.img
-                    className="col-6 unileftright"
+                    className="unileftright"
                     initial={{ x: '-100vw' }}
                     animate={{ x: '115vw' }}
                     transition={{ duration: 3, delay: 9, loop: "Infinity" }}
@@ -160,12 +160,12 @@ export default function Home() {
             </motion.div>
             <div className="container-fluid">
                 <motion.div
-                    className="row"
+                    className="row row-cols-2"
                     variants={childVariantsRev}
                     id="ground">
 
                     <motion.img
-                        className="col-6"
+                        className="col"
                         initial={{ x: "-50vw" }}
                         animate={{ x: "-10vw" }}
                         transition={{ duration: 3, delay: 9, yoyo: "Infinity" }}
@@ -187,7 +187,7 @@ export default function Home() {
                     ></motion.img> */}
 
                     <motion.img
-                        className="col-6"
+                        className="col"
                         initial={{ x: "70vw" }}
                         animate={{ x: "20vw" }}
                         transition={{ duration: 3, delay: 9, yoyo: "Infinity" }}
@@ -198,6 +198,7 @@ export default function Home() {
 
                 </motion.div>
             </div>
+            {/* fix this - button not breaking right */}
             <motion.div className="jumbotron jumbotron-fluid bg-gradient-violet text-center"
                 style={{ marginBottom: 0 }}
                 initial={{ x: -1000, opacity: 0 }}

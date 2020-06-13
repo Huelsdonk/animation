@@ -13,7 +13,7 @@ h6 {
     background: url("./../../assets/cloud3.png");    
     background-repeat: repeat-x;
     background-position: top;
-    min-height: 512px;
+    height: 512px !important;
     width: auto;
 }
 
@@ -21,7 +21,7 @@ h6 {
     background: url("./../../assets/grass.png");    
     background-repeat: repeat-x;
     background-position: bottom;
-    min-height: 512px;
+    /* min-height: 512px; */
     width: auto;
 }
 
