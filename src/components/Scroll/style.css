@@ -15,6 +15,19 @@
     padding: 20px;
   }
 
-  .row {
+  .example-container div {
+    background: white !important;
+    border-radius: 30px;
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
   }
   
+  #kazoo {
+    position:fixed;
+    bottom: 0;
+    right: 0;
+  }
