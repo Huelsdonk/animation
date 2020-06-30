@@ -1,108 +1,64 @@
 import React from 'react'
-import { useState, useRef, useLayoutEffect } from 'react' 
+import { useState, useRef, useLayoutEffect } from 'react'
 import { useViewportScroll, motion, useTransform } from 'framer-motion'
 import './style.css'
 import Unicorn4 from "./../../assets/unicorn4.png"
+import { bunchOfUnicorns } from "./bunchOfUnicorns"
+import { bunchMoreUnicorns } from "./bunchMoreUnicorns"
+import ImageBucket from "../ImageBucket"
 
 export default function Scroll() {
-    const [elState, setElState] = useState(0);
-    const ref = useRef(null);
-    const { scrollYProgress } = useViewportScroll()
-    const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
+    // const [elTop, setElTop] = useState(0)
+    // const ref = useRef(null)
+    const transition = {
+        ease: "easeIn"
+      }
+    
+    const { scrollY } = useViewportScroll()
+    const { scrollX } = useViewportScroll();
+    const { scrollYProgress } = useViewportScroll();
+    const scale = useTransform(scrollYProgress, [0, 1], [0.1, 1.1]);
 
-    const y = useTransform(scrollYProgress, [elState, elState + 1], [0, -1], {
-        clamp: false
-      });
-
-    //   useLayoutEffect(() => {
-    //     const element = ref.current;
-    //     setElState(element.offsetTop);
-    //   }, [ref]);
-
-    // try changing x too, get some to move horizontally, some vertically. get this done...
-
+    const y1 = useTransform(scrollYProgress, [0, 1], [Math.floor(Math.random() * (600 - 300) + 300), Math.floor(Math.random() * (1000 - 500) + 500)]);
+    const x1 = useTransform(scrollYProgress, [0, .25, .5, .75, 1], [200, 900, -100, 950, 0], {ease:"easeOut"})
+    const y2 = useTransform(scrollYProgress, [0, 1], [-12000, -13000]);
+    const x2 = useTransform(scrollYProgress, [0, .25, .5, .75, 1], [0, -150, 1000, -100, 100])
+    const rotation = useTransform(scrollYProgress, [0, 1], [0, 360])
+    const z1 = useTransform(scrollYProgress, [0, .5, 1], [0, -20, 0])
+    const color = useTransform(scrollYProgress, [0,1], [.2, .8])
+   
+    let style = { y: y1, x: x1, scale, rotate: rotation, zIndex: z1}
+    let style2 = { y: y2, x: x2, scale, rotate: rotation }
+    
     return (
-        <div className="Scroll">
-            <div className="container">
-                <div className="row">
-                    <div className="col-4">
-                        <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-                    </div>
-                    <div className="col-4">
-                        <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                    </div>
-                    <div className="col-4">
-                        <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                    </div>
+        <motion.div style={{opacity: color}} className="Scroll">
+            <div className="jumbotron jumbotron-fluid">
+                <div className="container">
+                    <h1 className="display-4">Scroll to see Unicorns</h1>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-3">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
+            {bunchOfUnicorns.map(unicorn => (
+                <ImageBucket {...unicorn} {...style} />
+            ))}
+            {bunchMoreUnicorns.map(unicorn => (
+                <ImageBucket {...unicorn} {...style2} />
+            ))}
 
-                </div>
-                <div className="col-3">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-                <div className="col-3">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-                <div className="col-3">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-2">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-                <div className="col-2">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-                <div className="col-2">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-                <div className="col-2">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-                <div className="col-2">
-                    <motion.img src={Unicorn4} alt="unicorn"></motion.img>
-
-                </div>
-                <div className="col-2">
-                    <motion.img src={Unicorn4} alt="unicorn" style={{y}}></motion.img>
-
-                </div>
-            </div>
+            {/* <div className="row">
+                    {bunchOfUnicorns.map((unicorn) => (<motion.div ref={ref} className="box col-6" style={{ y: y1, x: x2, scale, z: y1, opacity: scale }} >
+                        <motion.img src={unicorn.src} style={{top: unicorn.top, left: unicorn.left}}alt="unicorn" ></motion.img>
+                    </motion.div>))}
+                    {bunchMoreUnicorns.map((unicorn) => (<motion.div
+                        className="box col-6"
+                        style={{ y: y2, x: x1}}
+                    >                <motion.img src={unicorn.src} alt="unicorn" ></motion.img>
+                    </motion.div >))}
+                </div> */}
 
 
-            <div className="wrapper">
-                <motion.div
-                    className="container1"
-                    style={{
-                        y
-                    }}
-                >
-                    <motion.div
-                        className="item"
-                        style={{
-                            y: scrollYProgress
-                        }}
-                    />
 
-                    
-                </motion.div>
 
-            </div>
-        </div>
+        </motion.div>
     )
 
 
