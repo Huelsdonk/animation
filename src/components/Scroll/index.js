@@ -1,32 +1,36 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useState, useRef, useLayoutEffect } from 'react'
-import { useViewportScroll, motion, useTransform } from 'framer-motion'
+import { useViewportScroll, motion, useTransform, useInvertedScale } from 'framer-motion'
 import './style.css'
-import Unicorn4 from "./../../assets/unicorn4.png"
 import { bunchOfUnicorns } from "./bunchOfUnicorns"
 import { bunchMoreUnicorns } from "./bunchMoreUnicorns"
 import ImageBucket from "../ImageBucket"
+import Unicorn4 from "./../../assets/unicorn4.png"
+
 
 export default function Scroll() {
     // const [elTop, setElTop] = useState(0)
     // const ref = useRef(null)
-    
-    
-    const { scrollY } = useViewportScroll()
-    const { scrollX } = useViewportScroll();
-    const { scrollYProgress } = useViewportScroll();
-    const scale = useTransform(scrollYProgress, [0, 1], [0.3, 1.5]);
 
+    
+    
+    const { scrollYProgress } = useViewportScroll();
+    const scale = useTransform(scrollYProgress, [0, .3, .7, 1], [1, .1,.7, 1.0]);
+    const scale2 = useTransform(scrollYProgress, [0, .3, .7, 1], [.5, 1, .3, 1]);
     const y1 = useTransform(scrollYProgress, [0, 1], [Math.floor(Math.random() * (600 - 300) + 300), Math.floor(Math.random() * (1000 - 500) + 500)]);
-    const x1 = useTransform(scrollYProgress, [0, .25, .5, .75, 1], [200, 900, -100, 950, 0])
+    const x1 = useTransform(scrollYProgress, [0, .25, .5, .75, 1], [200, 900, -100, 950, 400])
     const y2 = useTransform(scrollYProgress, [0, 1], [-12000, -13000]);
     const x2 = useTransform(scrollYProgress, [0, .25, .5, .75, 1], [0, -200, 1200, -100, 100])
-    const rotation = useTransform(scrollYProgress, [0, 1], [0, 360])
-    const z1 = useTransform(scrollYProgress, [0, .5, 1], [0, 20, 0])
+    const rotation = useTransform(scrollYProgress, [0, 1], [0, 1080])
+    const invRotation = useTransform(scrollYProgress, [0, 1], [360, 0])
+    const z1 = useTransform(scrollYProgress, [0, 1], [1000, 20])
     const background = useTransform(scrollYProgress, [0, .5, .75], ["#ff008c", "#7700ff", "rgb(230, 255, 0)"])
    
+    
+
     let style = { y: y1, x: x1, scale, rotate: rotation, zIndex: z1}
-    let style2 = { y: y2, x: x2, scale, rotate: rotation, zIndex: 10 }
+    let style2 = { y: y2, x: x2, scale: scale2, rotate: invRotation, zIndex: 0 }
     
     return (
         <motion.div style={{background}} className="Scroll">
@@ -42,19 +46,19 @@ export default function Scroll() {
             {bunchMoreUnicorns.map(unicorn => (
                 <ImageBucket {...unicorn} {...style2} />
             ))}
+            <motion.div>
+            <motion.img
+                        className="unileftright"
+                        initial={{ y: 0 }}
+                        animate={{ y: -30000 }}
+                        transition={{ duration: 12, loop: "Infinity" }}
 
-            {/* <div className="row">
-                    {bunchOfUnicorns.map((unicorn) => (<motion.div ref={ref} className="box col-6" style={{ y: y1, x: x2, scale, z: y1, opacity: scale }} >
-                        <motion.img src={unicorn.src} style={{top: unicorn.top, left: unicorn.left}}alt="unicorn" ></motion.img>
-                    </motion.div>))}
-                    {bunchMoreUnicorns.map((unicorn) => (<motion.div
-                        className="box col-6"
-                        style={{ y: y2, x: x1}}
-                    >                <motion.img src={unicorn.src} alt="unicorn" ></motion.img>
-                    </motion.div >))}
-                </div> */}
-
-<button className="btn btn-primary btn-lg" id="kazoo">dskfdsakljf;</button>
+                        alt="unicorn"
+                        src={Unicorn4}
+                    ></motion.img>
+            </motion.div>
+           
+<Link to="/dragUni"><button className="btn btn-primary btn-lg" id="kazoo">Good Heavens! Even More Unicorns?!?</button></Link>
 
         </motion.div>
     )

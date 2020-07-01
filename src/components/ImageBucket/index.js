@@ -15,14 +15,8 @@ export default function ImageBucket({ src, ...style }) {
     const { scrollY } = useViewportScroll()
     const { scrollX } = useViewportScroll();
     const { scrollYProgress } = useViewportScroll();
-    const scale = useTransform(scrollYProgress, [0, 1], [0.1, 1.0]);
-    let arra = []
-    const booger = () => {
-        for (let i = 0; i < 5; i++) {
-            arra.push(Math.floor(Math.random() * (1000 - 500) + 500))
-
-        }
-    }
+    const scale = useTransform(scrollYProgress, [0, .3, .7, 1], [1, .1,.7, 1.0]);
+    
 
     // const y1 = useTransform(scrollYProgress, [elTop, elTop + 1], [Math.floor(Math.random() * (600 - 300) + 300), Math.floor(Math.random() * (1000 - 500) + 500)]);
     // const x1 = useTransform(scrollYProgress, [0, .25, .5, .75, 1], [0, -500, 500, -500, 0])
@@ -39,7 +33,6 @@ export default function ImageBucket({ src, ...style }) {
     return (
         <div className="ImageBucket">
             <motion.img  src={src} style={{...style}} alt="unicorn" ></motion.img>
-
 
         </div>
 
