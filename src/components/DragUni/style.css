@@ -1,0 +1,15 @@
+.uniDiv {
+    height: 100vh;
+    width: 100vw;
+}
+
+.unicorn {
+    position: absolute;
+    top: calc(50% - 512px / 2);
+    left: calc(50% - 512px / 2);
+    padding: 0;
+}
+
+.noithg {
+    background: rgb(220,1,2), rgb(5,4,3)
+}
